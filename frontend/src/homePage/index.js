@@ -164,11 +164,19 @@ export default function HomePage() {
                     <MenuItem onClick={() => setPlayList('Song 3')}>Song 3</MenuItem>
                 </Menu>
                 */}
-                <Table classes={{ root: classes.table }}>
-                        <TableBody >
-                            <TableRow style={{backgroundColor:'#333333'}} >
-                                <TableCell style={{borderBottom:"none", color:"white"}} align="centre">Song</TableCell>
-                                <TableCell style={{borderBottom:"none", color:"white"}} align="centre" rowSpan={2}><img src="song.png"/></TableCell>
+                    <Table classes={{ root: classes.table }}>
+                        <TableBody className={styles.tableStyle}>
+                            <TableRow style={{ backgroundColor: '#333333' }} className={styles.tableStyle}>
+                                <TableCell style={{ borderBottom: "none", color: "white", fontSize: "18pt" }} align="centre">Want you</TableCell>
+                                <TableCell style={{ borderBottom: "none", color: "white" }} align="centre" rowSpan={2}>
+                                    <img
+                                        src="https://i.scdn.co/image/ab67616d00004851c34e9b33adb0030233a6efef"
+                                        className={styles.image}
+                                    />
+                                </TableCell>
+                            </TableRow>
+                            <TableRow style={{ backgroundColor: '#333333' }}>
+                                <TableCell style={{ borderBottom: "none", color: "white" }} align="centre">Kanine</TableCell>
 
                             </TableRow>
                             <TableRow style={{backgroundColor:'#333333'}}>
@@ -180,11 +188,15 @@ export default function HomePage() {
                     </Table>
 
                     <Table classes={{ root: classes.table }}>
-                    <TableBody >
-                            <TableRow style={{backgroundColor:'#333333'}}>
-                                <TableCell style={{borderBottom:"none", color:"white"}} align="centre">Song</TableCell>
-                                <TableCell style={{borderBottom:"none", color:"white"}} align="centre" rowSpan={2}><img src="song.png"/></TableCell>
-
+                        <TableBody >
+                            <TableRow style={{ backgroundColor: '#333333' }}>
+                                <TableCell style={{ borderBottom: "none", color: "white", fontSize: "18pt" }} align="centre">Song</TableCell>
+                                <TableCell style={{ borderBottom: "none", color: "white" }} align="centre" rowSpan={2}>
+                                    <img
+                                        src="https://i.scdn.co/image/ab67616d00001e024719d135efa3d7567c0d7faa"
+                                        className={styles.image}
+                                    />
+                                </TableCell>
                             </TableRow>
                         
                         
