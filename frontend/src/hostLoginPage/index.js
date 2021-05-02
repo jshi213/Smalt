@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "./style.module.css";
 import { useHistory } from 'react-router-dom';
 import { Button, TextField, makeStyles } from '@material-ui/core';
 import { green, purple } from '@material-ui/core/colors';
-
+import axios from 'axios';
 const useStyles = makeStyles({
     primaryButton: {
         background: "#30A0F5",
@@ -23,6 +23,24 @@ const useStyles = makeStyles({
 export default function hostLoginPage() {
     const classes = useStyles();
     const history = useHistory();
+
+       // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    //console.log(window.location.search);
+    var code = new URLSearchParams(window.location.search).get("code")
+    if(code != null){
+        console.log("code found")
+        const payload={
+            params: {
+                authCode: code
+            }
+        };
+        const response = axios.get('http://localhost:3001/users/auth/code', payload);
+    }
+    console.log(code);
+    
+  });
 
     const handleBack = () => {
         console.log('back');
