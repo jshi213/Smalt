@@ -4,7 +4,7 @@ import './App.css';
 import LandingPage from './landingPage';
 import JoinPlaylistPage from './joinPlaylistPage';
 import HomePage from './homePage';
-
+import HostLoginPage from './hostLoginPage';
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +12,10 @@ function App() {
 
         <Route path="/joinplaylist">
           <JoinPlaylistPage />
+        </Route>
+
+        <Route path="/host">
+          <HostLoginPage />
         </Route>
 
         <Route path="/home">
