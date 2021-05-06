@@ -28,12 +28,16 @@ async function main() {
   if (connect.connectToDatabase(TESTCONNECTIONSTRING)) {
     console.log("connection success");
   }
-  await query.clearDB();
+  //await query.clearDB();
   var roomCode = await query.createNewRoom(testToken, makeCode(4));
 
   await query.addSongToPool(testSong, roomCode);
   await query.addUserToRoom(testUser, roomCode);
   await query.getCompleteRoom(roomCode);
+  await query.removeSongfromPool(id);
+  
+  console.log(await query.getRoomById(roomCode));
+
 
   function makeCode(length) {
     var result = [];

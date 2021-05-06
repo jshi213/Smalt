@@ -57,3 +57,24 @@ async function getRoomById(roomId) {
   const room = await Room.findOne({ code: roomId });
   return room;
 }
+
+exports.getRoomById = async function (roomId) {
+  const room = await Room.findOne({ code: roomId });
+  return room;
+}
+
+//Retrieves song by spotify id
+async function getSongBySpotifyID(roomId){
+  const room = await getRoomById(roomId);
+  const spotifyid = await room.playlist.songs.spotifyid;
+  return spotifyId;
+}
+
+//Query to remove song from playlist by Spotify id
+exports.removeSongfromPool = async function (id, roomId) {
+  room = await getRoomById(roomId);
+  room.playlist.songs.deleteOne(id);
+  await room.save();
+};
+
+
