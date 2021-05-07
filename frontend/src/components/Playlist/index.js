@@ -7,6 +7,10 @@ import {
   TableRow,
 } from "@material-ui/core";
 import socketIOClient from "socket.io-client";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 const ENDPOINT = "http://localhost:3001/";
 export default function Playlist() {
 
@@ -22,6 +26,16 @@ export default function Playlist() {
 
     });
   }, [])
+
+  const [likeButtonColor, setLikeButtonColor] = useState('inherit');
+
+  const handleLikeButton = () => {
+    if (likeButtonColor !== 'inherit'){
+      setLikeButtonColor('inherit');
+    }else{
+      setLikeButtonColor('secondary');
+    }
+  }
 
 
   return (
@@ -39,9 +53,11 @@ export default function Playlist() {
                   className={styles.image}
                 />
               </TableCell>
+              <TableCell className={styles.tableCell} rowSpan={2}>
+                <IconButton onClick={handleLikeButton} color={likeButtonColor}><FavoriteIcon /></IconButton>
+              </TableCell>
             </TableRow>
             <TableRow className={styles.tableRow}>
-
               <TableCell className={styles.tableCell}>{data.artist}</TableCell>
             </TableRow>
           </>
