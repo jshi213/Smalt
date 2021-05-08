@@ -51,16 +51,17 @@ export default function Playlist() {
                 />
               </TableCell>
               <TableCell className={styles.tableCellHead}>
-                {data.name}
+                Song
               </TableCell>
-              <TableCell className={styles.tableCellDate} rowSpan={2}>
-                YYYY-MM-DD
+              <TableCell className={styles.tableCellHead}>
+                {data.name}
               </TableCell>
               <TableCell className={styles.tableCellLikeButton} rowSpan={2}>
                 <IconButton onClick={handleLikeButton} color={likeButtonColor}><FavoriteIcon /></IconButton>
               </TableCell>
             </TableRow>
             <TableRow className={styles.tableRow}>
+              <TableCell className={styles.tableCell}>Artist</TableCell>
               <TableCell className={styles.tableCell}>{data.artist}</TableCell>
             </TableRow>
           </>
