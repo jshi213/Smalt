@@ -40,20 +40,23 @@ export default function Playlist() {
 
   return (
     <>
-      <Table className={styles.table}>
+      <Table className={styles.table} size="small">
         <TableBody>
           <>
             <TableRow className={styles.tableRow}>
-              <TableCell className={styles.tableCellHead}>
-                {data.name}
-              </TableCell>
-              <TableCell className={styles.tableCell} rowSpan={2}>
+              <TableCell className={styles.tableCellImg} rowSpan={2}>
                 <img
                   src={data.src}
                   className={styles.image}
                 />
               </TableCell>
-              <TableCell className={styles.tableCell} rowSpan={2}>
+              <TableCell className={styles.tableCellHead}>
+                {data.name}
+              </TableCell>
+              <TableCell className={styles.tableCellDate} rowSpan={2}>
+                YYYY-MM-DD
+              </TableCell>
+              <TableCell className={styles.tableCellLikeButton} rowSpan={2}>
                 <IconButton onClick={handleLikeButton} color={likeButtonColor}><FavoriteIcon /></IconButton>
               </TableCell>
             </TableRow>
