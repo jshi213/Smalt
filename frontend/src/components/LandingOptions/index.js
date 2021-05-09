@@ -1,9 +1,8 @@
-import React from "react";
+import React, {useE} from "react";
 import axios from "axios";
 import styles from "./style.module.css";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-
 export default function LandingOptions() {
   const history = useHistory();
 
@@ -11,6 +10,7 @@ export default function LandingOptions() {
     console.log("join playlist");
     history.push("/joinplaylist");
   };
+
 
   async function handleLogin() {
     const payload = {
