@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import styles from "./style.module.css";
-import Song from "../Song";
+import { Song } from "../";
 import { Table, TableBody } from "@material-ui/core";
 import { PlaylistContext } from "../../playlist-context";
 
 const ENDPOINT = "http://localhost:3001/";
 
-export default function Playlist(props) {
+export default function Playlist() {
   const [playlist, setPlaylist] = useContext(PlaylistContext);
 
   return (

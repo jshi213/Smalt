@@ -45,6 +45,7 @@ export default function HostCreateRoom() {
         name: roomName,
         userName: cookies.host.username,
       };
+      console.log(room.userName);
       const response = await axios.post("http://localhost:3001/host/new", room);
       console.log(response)
       var cookie = {
@@ -75,7 +76,7 @@ export default function HostCreateRoom() {
           className={styles.textField}
           id="standard-basic"
           variant="outlined"
-          label="Username"
+          label="Room name"
           value={roomName}
           error={emptyFieldFlag}
           helperText={emptyFieldFlag && "Please enter a room name"}

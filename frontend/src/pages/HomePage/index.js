@@ -16,6 +16,10 @@ import IconButton from '@material-ui/core/IconButton';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import axios from "axios";
 
+import DevicesIcon from '@material-ui/icons/Devices';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
+import { OutlinedFlag } from "@material-ui/icons";
 /* This HomePage() function harnesses Material-UI and React to create the homepage. It obtains the history object from the history hook in which uses the created room to 
 obtain and retrieve the cookies. The pop over menu button has the onClick prop set to handleOpenMenu function where it sets the anchor element to open the pop over menu.*/
 
@@ -25,9 +29,31 @@ export default function HomePage() {
   const [cookies, setCookie] = useCookies(['room']);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [playlist, setPlaylist] = React.useState( [] );
+  const [anchorElDev, setAnchorElDev] = React.useState(null);
+  const [playPause, setPlayPause] = React.useState(true);
+
+  const handlePlayPause = () => {
+    if (playPause){
+      setPlayPause = false;
+    }else{
+      setPlayPause = true;
+    }
+  }
+
+  const DevButton = () =>{
+    if (playPause) {
+      return <PlayArrowIcon />;
+    } else {
+      return <PauseIcon />;
+    }
+  }
 
   const handleOpenMenu = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleOpenMenuDev = (event) => {
+    setAnchorElDev(event.currentTarget);
   };
 
   useEffect(() => {
@@ -42,6 +68,11 @@ export default function HomePage() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleCloseDev = () => {
+    setAnchorElDev(null);
+  };
+
   const handleBack = () => {
     history.goBack();
   };
@@ -74,15 +105,35 @@ export default function HomePage() {
       </div>
       <div className={styles.bodyPartContainer}>
         <div>
-          <h1>Room: {cookies.room.id}</h1>
-          <IconButton
-          className={styles.menuButton}
-          onClick={handlePlay}
-          aria-controls="menu-list"
-          aria-haspopup="true"
-        >
-          <DehazeIcon />
-        </IconButton>
+          <p className={styles.namelogo}><i>Smalt</i></p>
+          <div>
+          <div style={{display: "inline-block"}}>
+            <IconButton className={styles.devButton}>
+              <PlayArrowIcon />
+            </IconButton>
+          </div>
+          <div style={{display: "inline-block"}}><h1 className={styles.name}>Room: {cookies.room.id}</h1></div>
+            <div style={{display: "inline-block"}}>
+              <IconButton
+                className={styles.devButton}  
+                onClick={handleOpenMenuDev}
+                aria-controls="menu-list-dev"
+                aria-haspopup="true">
+                <DevicesIcon />
+              </IconButton>
+              <Menu
+                id="menu-list-dev"
+                anchorEl={anchorElDev}
+                keepMounted
+                open={Boolean(anchorElDev)}
+                onClose={handleCloseDev}
+              >
+                <MenuItem onClick={handleCloseDev}>Login</MenuItem>
+                <MenuItem onClick={handleCloseDev}>My account</MenuItem>
+                <MenuItem onClick={handleCloseDev}>Logout</MenuItem>
+              </Menu>
+              </div>
+          </div>
           <PlaylistContext.Provider value={[playlist, setPlaylist]}>
           <SongSearch />
           <WebSocketProvider />

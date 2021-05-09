@@ -27,7 +27,27 @@ const roomSchema = new Schema({
   //playlist subdocument
   playlist: {
     currentSong: {
-      type: Schema.Types.ObjectId,
+      name: {
+        type: String,
+        required: true,
+      },
+      imageURL: {
+        type: String,
+        required: true,
+      },
+      artists: [
+        {
+          type: String,
+          required: true,
+        }],
+      songDuration: {
+        type: Number,
+        required: true,
+      }, //in milliseconds
+      id: {
+        type: String,
+        required: true,
+      } //spotify id
     },
     //songs nested subdocument. This array syntax means we can have multiple songs in a given playlist
     songs: [

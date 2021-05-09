@@ -16,8 +16,8 @@ export default function LandingPage() {
       }, []);
   
     return (
-        
         <div className={styles.rootContainer} >
+            <p className={styles.name} align="center"><i>Smalt</i></p>
             <LandingOptions />
         </div>
     );
