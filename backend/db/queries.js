@@ -6,8 +6,8 @@ exports.createNewHost = async function(tokens, hostName){
   console.log(hostName);
 var host =await new Host();
 
-host.host.userName = hostName;
-host.host.tokens = tokens;
+host.userName = hostName;
+host.tokens = tokens;
 console.log(host);
 await addData(host);
 return host._id;
@@ -34,7 +34,7 @@ exports.createNewRoom = async function (host_id) {
   await addData(room);
   const host = await Host.findOne({_id : host_id});
   console.log(host);
-  ans = await host.host.rooms.push(room._id);
+  ans = await host.rooms.push(room._id);
   console.log(ans);
   host.save();
 
@@ -55,7 +55,7 @@ exports.addSongToPool = async function (song, roomId) {
 exports.refreshTokens = async function (newToken, roomId) {
   const room = await Room.findOne({ code: roomId });
   const host = await Host.findOne({_id: room.host._id})
-  host.host.tokens.accessToken = newToken;
+  host.tokens.accessToken = newToken;
   host.save();
 };
 
@@ -73,7 +73,7 @@ exports.clearDB = async function () {
 
 async function addData(room) {
   const result = await room.save();
-  console.log(`Added room to the database.`);
+  console.log(`Added to the database.`);
 }
 
 function makeCode(length) {
@@ -103,12 +103,12 @@ exports.roomDoesExist = async function (roomCode) {
 exports.getAccessToken = async function (roomId) {
   console.log(`room id: ${roomId}`)
   const room = await Room.findOne({ code: roomId }).populate("host");
-  return room.host.host.tokens.accessToken;
+  return room.host.tokens.accessToken;
 };
 exports.getRefreshToken = async function (roomId) {
   console.log(`room id: ${roomId}`)
   const room = await Room.findOne({ code: roomId }).populate("host");
-  return room.host.host.tokens.refreshToken;
+  return room.host.tokens.refreshToken;
 };
 
 

@@ -23,8 +23,9 @@ router.post("/login", async (req, res) => {
   });
 
   router.post("/new", async (req, res) => {
-      console.log(req);
-      hostUsername = req.body.username;
+      console.log("zinger")
+      console.log(req.body);
+      hostUsername = req.body.userName;
       console.log(hostUsername);
       host_id = await query.getHostById(hostUsername);
       code = await query.createNewRoom(host_id, req.body.name)
