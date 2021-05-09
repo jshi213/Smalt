@@ -65,7 +65,6 @@ Smalt is essentially a Web Application utilising the Spotify API to create playl
 ### 25/04/21 - In-person & Zoom meeting
 * Discussed issues with backend
 * Added more issues to be worked on
-* We felt it was necessary to change the methodology from Software Development Lifecycle to Agile Methodology
 
 ### 01/05/21 - In-person & Zoom meeting
 * Discussed Spotify API documentation and the endpoints required
