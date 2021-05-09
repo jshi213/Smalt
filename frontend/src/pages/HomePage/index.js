@@ -14,6 +14,7 @@ import { PlaylistContext } from '../../playlist-context';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import IconButton from '@material-ui/core/IconButton';
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import axios from "axios";
 
 /* This HomePage() function harnesses Material-UI and React to create the homepage. It obtains the history object from the history hook in which uses the created room to 
 obtain and retrieve the cookies. The pop over menu button has the onClick prop set to handleOpenMenu function where it sets the anchor element to open the pop over menu.*/
@@ -32,6 +33,11 @@ export default function HomePage() {
   useEffect(() => {
     console.log("homepage rerender");
   }, []);
+
+  const handlePlay = () =>{
+    const data = {room: cookies.room.id}
+    axios.post("http://localhost:3001/host/play",data);
+  }
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -69,6 +75,14 @@ export default function HomePage() {
       <div className={styles.bodyPartContainer}>
         <div>
           <h1>Room: {cookies.room.id}</h1>
+          <IconButton
+          className={styles.menuButton}
+          onClick={handlePlay}
+          aria-controls="menu-list"
+          aria-haspopup="true"
+        >
+          <DehazeIcon />
+        </IconButton>
           <PlaylistContext.Provider value={[playlist, setPlaylist]}>
           <SongSearch />
           <WebSocketProvider />

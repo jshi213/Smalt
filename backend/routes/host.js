@@ -32,4 +32,16 @@ router.post("/login", async (req, res) => {
       res.status(200).send(code);
   });
 
+  router.post("/play", async (req, res) => {
+    
+    console.log(req.body);
+    room = req.body.room;
+    const song =await query.highestVotedSong(room)
+    console.log(song);
+    const token = await query.getAccessToken(room);
+
+    await spotify.playSong(token,song);
+
+});
+
   module.exports = router;

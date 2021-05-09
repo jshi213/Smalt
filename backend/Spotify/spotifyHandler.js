@@ -67,6 +67,7 @@ exports.getDevices= async function(token){
 
 exports.playSong = async function(token, song_id, device_id){
     headers = getHeaders(token);
+    console.log(song_id);
     str = "[\"spotify:track:" + song_id + "\"]"
     body = {uris :[`spotify:track:${song_id}`]}
     config = {

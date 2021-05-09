@@ -70,6 +70,17 @@ exports.clearDB = async function () {
   const hostsGone = await Host.deleteMany({});
   console.log(`Cleared database (removed ${roomsGone.deletedCount} rooms, ${hostsGone.deletedCount} hosts).`);
 };
+exports.highestVotedSong = async function(roomId){
+  songs = await this.getAllSongs(roomId);
+  console.log(songs);
+  var bigSong = songs.songs[0];
+  songs.songs.forEach(song =>{
+    if(song.upVoteCount>bigSong.upVoteCount){
+      bigSong =song;
+    }
+  });
+  return bigSong.id;
+}
 
 async function addData(room) {
   const result = await room.save();
