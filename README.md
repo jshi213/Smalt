@@ -88,7 +88,7 @@ The following are records of our Meeting Minutes we stored on our shared Project
 
 ## Tasks Breakdown
 
-| Joel Shin (Mostly Full-Stack)       | Josh Burton (Mostly Full-Stack)   | Jingwei Min (Frontend)     | Pranesh Chand (Backend)                               |
+| Joel Shin (Full-Stack)              | Josh Burton (Mostly Full-Stack)   | Jingwei Min (Frontend)     | Pranesh Chand (Backend)                               |
 | ----------------------------------- | --------------------------------- | -------------------------- | -------------------------------------------- |
 | Create issues on GitHub             | Spotify login and authentication  | Design pages for frontend  | Database Connection & Schema Setup           |
 | Backend - All Aspects               | Backend - Endpoints & Sockets     | search bar error message   | Assisted with creating Db Queries            |
