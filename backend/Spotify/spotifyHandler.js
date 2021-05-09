@@ -67,10 +67,11 @@ exports.getDevices= async function(token){
 
 exports.playSong = async function(token, song_id, device_id){
     headers = getHeaders(token);
-    body = {context_uri : "spotify:tracks:" + song_id}
+    str = "[\"spotify:track:" + song_id + "\"]"
+    body = {uris :[`spotify:track:${song_id}`]}
     config = {
         headers: headers,
-        params: device_id
+        params: `"${device_id}"`
     }
     console.log(body);
     res = await axios.put(PLAY, body,config).catch(err =>{
@@ -94,6 +95,10 @@ exports.createGetTrackQuery = function (trackId) {
     url += "?market=NZ";
     console.log(url);
     return url;
+}
+
+exports.pollActiveSong = async function(token){
+
 }
 
 
