@@ -15,10 +15,10 @@ Smalt is essentially a Web Application utilising the Spotify API to create playl
 * Guests can request the same song to be played multiple times. 
 
 ## Deployment Instructions
-1. Open a new Terminal window and enter the following to clone the Project repository: $ git clone https://github.com/jshi213/Smalt.git
-2. After cloning the repository, navigate to the Smalt folder: $ cd Smalt
-3. Install all the required dependencies and packages using the following command: $ npm install 
-4. Run the project on your local machine: $ npm run dev
+1. Open a new Terminal window and enter the following to clone the Project repository: git clone https://github.com/jshi213/Smalt.git
+2. After cloning the repository, navigate to the Smalt folder: cd Smalt
+3. Install all the required dependencies and packages using the following command:  npm install 
+4. Run the project on your local machine: npm run dev
 5. Navigate to localhost:3000 in your browser 
 
 ## How to Use
@@ -90,9 +90,9 @@ Smalt is essentially a Web Application utilising the Spotify API to create playl
 | Joel Shin                | Josh Burton                       | Jingwei Min                | Pranesh Chand                                |
 | ------------------------ | --------------------------------- | -------------------------- | -------------------------------------------- |
 | Create issues on GitHub  | Spotify login and authentication  | Design pages for frontend  | Database Connection & Schema Setup           |
-| Content Cell             | Content Cell                      | Content Cell               | Intialisation of Db Queries                  |
-| Content Cell             | Content Cell                      | Content Cell               | Write README.md file                         |
-| Content Cell             | Content Cell                      | Content Cell               | Write Wiki on GitHub Repo                    |
-| Content Cell             | Content Cell                      | Content Cell               | Refactor Axios requests into seperate files  |
+| Content Cell             | Content Cell                      | search bar error message   | Intialisation of Db Queries                  |
+| Content Cell             | Content Cell                      | icon button                | Write README.md file                         |
+| Content Cell             | Content Cell                      | format the outlook         | Write Wiki on GitHub Repo                    |
+| Content Cell             | Content Cell                      | update css style           | Refactor Axios requests into seperate files  |
 
 
