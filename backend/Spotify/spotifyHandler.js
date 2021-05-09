@@ -26,15 +26,17 @@ const CURRENTLYPLAYING = "https://api.spotify.com/v1/me/player/currently-playing
 const SHUFFLE = "https://api.spotify.com/v1/me/player/shuffle";
 const SEARCH = "https://api.spotify.com/v1/search";
 
-exports.getUsername = async function (token){
-    
+function getHeaders(token){
     let headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": "Bearer " + token
     }
+    return headers;
+}
+exports.getUsername = async function (token){
+    headers = getHeaders(token)
     res = await axios.get(USERNAME, { headers: headers }).catch(err =>{
-        console.log("ahh");
         console.log(err.response.data);
     });
     console.log(res)
@@ -51,6 +53,32 @@ exports.createAuthRequest = function (redirectUri) {
     url += "&show_dialog=true";
     url += "&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private";
     return url;
+}
+
+exports.getDevices= async function(token){
+    headers = getHeaders(token);
+    res = await axios.get(DEVICES, { headers: headers }).catch(err =>{
+        console.log(err.response.data);
+    });
+    console.log(res.data)
+    formatted = {name : res.data.name, id: res.data.id}
+    return formatted;
+}
+
+exports.playSong = async function(token, song_id, device_id){
+    headers = getHeaders(token);
+    body = {context_uri : "spotify:tracks:" + song_id}
+    config = {
+        headers: headers,
+        params: device_id
+    }
+    console.log(body);
+    res = await axios.put(PLAY, body,config).catch(err =>{
+        console.log(err.response.data);
+    });
+    console.log(res.data)
+    formatted = {name : res.data.name, id: res.data.id}
+    return formatted;
 }
 
 exports.createSearchQuery = function (searchTerm) {

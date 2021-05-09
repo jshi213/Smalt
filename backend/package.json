@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./app.js",
-    "testdb": "node ./db/test.js"
+    "testdb": "node ./db/test.js",
+    "testAPI": "node ./Spotify/test.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
