@@ -28,15 +28,14 @@ router.post("/new", async (req, res) => {
   console.log(hostUsername);
   var host_id = await query.getHostById(hostUsername);
   var code = await query.createNewRoom(host_id, req.body.name);
-  var trackToBePlayed = {
-    id: "0",
-  };
-  console.log("code");
-  console.log(code);
-  var accessToken = await query.getAccessToken(code);
-  console.log(accessToken);
-  await spotify.pollPlayback(accessToken, trackToBePlayed);
-  //var playbackPoller = window.setInterval(spotify.pollPlayback, 1000, "accesstoken", trackToBePlayed);
+  // var trackToBePlayed = {
+  //   id: "0",
+  // };
+  // console.log("code");
+  // console.log(code);
+  // var accessToken = await query.getAccessToken(code);
+  // console.log(accessToken);
+  // var playbackPoller = window.setInterval(spotify.pollPlayback, 1000, accessToken, trackToBePlayed);
   res.status(200).send(code);
 });
 

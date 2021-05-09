@@ -135,14 +135,15 @@ exports.pollPlayback = async function (accessToken, trackToBePlayed) {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + accessToken
     }
-
+    var nextTrack = trackToBePlayed;
     var response = await axios.get(PLAYER, {
         headers: headers
     });
-    console.log("pollback function execution");
     console.log(response);
-    // if (trackToBePlayed.id === response)
-    // var returnedData = response.data;
+    if (trackToBePlayed.id !== response.data.uri) {
+        
+    }
+    var returnedData = response.data;
 }
 
 async function callApiPost(body) {
