@@ -32,6 +32,8 @@ exports.createNewRoom = async function (host_id) {
   });
   room.host = host_id;
   await addData(room);
+  console.log("createroomquery");
+  console.log(room);
   const host = await Host.findOne({_id : host_id});
   console.log(host);
   ans = await host.rooms.push(room._id);
@@ -101,8 +103,9 @@ exports.roomDoesExist = async function (roomCode) {
 };
 
 exports.getAccessToken = async function (roomId) {
-  console.log(`room id: ${roomId}`)
+  console.log(`room id: ${roomId}`);
   const room = await Room.findOne({ code: roomId }).populate("host");
+  console.log(room);
   return room.host.tokens.accessToken;
 };
 exports.getRefreshToken = async function (roomId) {

@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
 //our spotify app keys
 const clientId = '0a6cf31ec5bf4808831e58a7bb937cc7';
 const clientSecret = '25b3362597014da293b32f9d99bca194';
@@ -27,6 +28,7 @@ const SHUFFLE = "https://api.spotify.com/v1/me/player/shuffle";
 const SEARCH = "https://api.spotify.com/v1/search";
 
 function getHeaders(token){
+
     let headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -34,13 +36,16 @@ function getHeaders(token){
     }
     return headers;
 }
+
 exports.getUsername = async function (token){
-    headers = getHeaders(token)
-    res = await axios.get(USERNAME, { headers: headers }).catch(err =>{
+    headers = getHeaders(token);
+
+    res = await axios.get(USERNAME, { headers: headers }).catch(err => {
+        console.log("ahh");
         console.log(err.response.data);
     });
     console.log(res)
-    return res.data.display_name
+    return res.data.display_name;
 }
 //this function creates string which redirects user to spotify with login prompt and returns it. User is redirected by frontend.
 //redirectUri Must be approved in spotify
@@ -96,19 +101,18 @@ exports.createGetTrackQuery = function (trackId) {
     return url;
 }
 
-
 exports.fetchAccessToken = async function (code) {
     let body = "grant_type=authorization_code";
-    body += "&code=" + code; 
+    body += "&code=" + code;
     body += "&redirect_uri=" + encodeURI('http://localhost:3000/host');
     body += "&client_id=" + clientId;
     body += "&client_secret=" + clientSecret;
-    
+
     var responseToken = await callApiPost(body);
-        output = {
-            accessToken:responseToken.data.access_token,
-            refreshToken:responseToken.data.refresh_token,
-        };
+    output = {
+        accessToken: responseToken.data.access_token,
+        refreshToken: responseToken.data.refresh_token,
+    };
     return output;
 }
 
@@ -123,21 +127,32 @@ exports.refreshAccessToken = async function (refreshToken) {
     return await callApiPost(body);
 }
 
+exports.pollPlayback = async function (accessToken, trackToBePlayed) {
+    console.log("pollplayback executed");
+    console.log(accessToken);
+    const headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + accessToken
+    }
+    var nextTrack = trackToBePlayed;
+    var response = await axios.get(PLAYER, {
+        headers: headers
+    });
+    console.log(response);
+    if (trackToBePlayed.id !== response.data.uri) {
+        
+    }
+    var returnedData = response.data;
+}
 
 async function callApiPost(body) {
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
     }
-    res = await axios.post(TOKEN, body, { headers: headers }).catch(err =>{
+    res = await axios.post(TOKEN, body, { headers: headers }).catch(err => {
         console.log(err.response.data);
     });
     return res;
 
 }
-
-
-
-
-
-
-
