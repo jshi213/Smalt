@@ -30,22 +30,6 @@ export default function HomePage() {
   const [anchorElDev, setAnchorElDev] = React.useState(null);
   const [playPause, setPlayPause] = React.useState(true);
 
-  const handlePlayPause = () => {
-    if (playPause){
-      setPlayPause = false;
-    }else{
-      setPlayPause = true;
-    }
-  }
-
-  const DevButton = () =>{
-    if (playPause) {
-      return <PlayArrowIcon />;
-    } else {
-      return <PauseIcon />;
-    }
-  }
-
   const handleOpenMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -98,34 +82,34 @@ export default function HomePage() {
       </div>
       <div className={styles.bodyPartContainer}>
         <div>
+          <div>
           <p className={styles.namelogo}><i>Smalt</i></p>
           <div>
-          <div style={{display: "inline-block"}}>
-            <IconButton className={styles.devButton}>
-              <PlayArrowIcon />
-            </IconButton>
-          </div>
-          <div style={{display: "inline-block"}}><h1 className={styles.name}>Room: {cookies.room.id}</h1></div>
             <div style={{display: "inline-block"}}>
-              <IconButton
-                className={styles.devButton}  
-                onClick={handleOpenMenuDev}
-                aria-controls="menu-list-dev"
-                aria-haspopup="true">
-                <DevicesIcon />
-              </IconButton>
-              <Menu
-                id="menu-list-dev"
-                anchorEl={anchorElDev}
-                keepMounted
-                open={Boolean(anchorElDev)}
-                onClose={handleCloseDev}
-              >
-                <MenuItem onClick={handleCloseDev}>Login</MenuItem>
-                <MenuItem onClick={handleCloseDev}>My account</MenuItem>
-                <MenuItem onClick={handleCloseDev}>Logout</MenuItem>
-              </Menu>
-              </div>
+              <IconButton className={styles.playButton}><PlayArrowIcon /></IconButton>
+            </div>
+            <div style={{display: "inline-block", position: "relative", float:"center"}}><h1 className={styles.name}>Room: {cookies.room.id}</h1></div>
+            <div style={{display: "inline-block"}}>
+                <IconButton
+                  className={styles.devButton}  
+                  onClick={handleOpenMenuDev}
+                  aria-controls="menu-list-dev"
+                  aria-haspopup="true">
+                  <DevicesIcon />
+                </IconButton>
+                <Menu
+                  id="menu-list-dev"
+                  anchorEl={anchorElDev}
+                  keepMounted
+                  open={Boolean(anchorElDev)}
+                  onClose={handleCloseDev}
+                >
+                  <MenuItem onClick={handleCloseDev}>Login</MenuItem>
+                  <MenuItem onClick={handleCloseDev}>My account</MenuItem>
+                  <MenuItem onClick={handleCloseDev}>Logout</MenuItem>
+                </Menu>
+                </div>
+            </div>
           </div>
           <PlaylistContext.Provider value={[playlist, setPlaylist]}>
           <SongSearch />
