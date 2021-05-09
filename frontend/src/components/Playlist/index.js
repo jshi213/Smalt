@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./style.module.css";
-import Song from "../Song";
+import { Song } from "../";
 import { Table, TableBody } from "@material-ui/core";
 import { PlaylistContext } from "../../playlist-context";
 
