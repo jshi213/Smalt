@@ -72,10 +72,12 @@ exports.getDevices= async function(token){
 
 exports.playSong = async function(token, song_id, device_id){
     headers = getHeaders(token);
-    body = {context_uri : "spotify:tracks:" + song_id}
+    console.log(song_id);
+    str = "[\"spotify:track:" + song_id + "\"]"
+    body = {uris :[`spotify:track:${song_id}`]}
     config = {
         headers: headers,
-        params: device_id
+        params: `"${device_id}"`
     }
     console.log(body);
     res = await axios.put(PLAY, body,config).catch(err =>{
@@ -135,15 +137,15 @@ exports.pollPlayback = async function (accessToken, trackToBePlayed) {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + accessToken
     }
-    var nextTrack = trackToBePlayed;
     var response = await axios.get(PLAYER, {
         headers: headers
     });
     console.log(response);
+    console.log(trackToBePlayed.id)
     if (trackToBePlayed.id !== response.data.uri) {
-        
+        return false;
     }
-    var returnedData = response.data;
+    return true;
 }
 
 async function callApiPost(body) {

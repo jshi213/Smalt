@@ -14,6 +14,8 @@ import { PlaylistContext } from '../../playlist-context';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import IconButton from '@material-ui/core/IconButton';
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import axios from "axios";
+
 import DevicesIcon from '@material-ui/icons/Devices';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
@@ -57,6 +59,11 @@ export default function HomePage() {
   useEffect(() => {
     console.log("homepage rerender");
   }, []);
+
+  const handlePlay = () =>{
+    const data = {room: cookies.room.id}
+    axios.post("http://localhost:3001/host/play",data);
+  }
 
   const handleClose = () => {
     setAnchorEl(null);

@@ -32,6 +32,8 @@ export default function HostCreateRoom() {
         username: response.data
       }
       setCookie('host', cookie, { path: '/' });
+      console.log(cookies)
+      console.log(cookies.host)
     }
     
   },[]);

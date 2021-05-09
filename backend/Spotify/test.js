@@ -3,8 +3,8 @@ const axios = require('axios');
 const query = require("../db/queries");
 const spotify = require("../Spotify/spotifyHandler")
 
-const token = "BQBL5o6eiixDgnBDjVLzKRzUeSly2T_y3OJe40m0uJLRWAdu6BgqbJbd8t_8r5_fTNB-59S0SsH2vkky8RwrjbyUdRw4Y-F6Xgy9LxL2opHN2KSjyU7VptUHixubjEfTODEE8hksE0Ff7L9J3z3dF9pYZQzklJTaUjB8GQK6ggtBlb21XJfHLVMaCuuzOFevIkc";
+const token = "BQCkYQE-oCGCR9vmZNZMya6im9CpNQX4zj-uc1LEcyQeBfbfDuo136OBu1iJSV7i36O0BgDT3kLf83SRlYYbipa0nSzFpE4lE1WBlVgw9YokLuDVcCA8F_ZDDgrPTQWIATuWIfNiz4_Sml1YS6jc4auxFvrRNgPbIHgIdFfu4jl8Q5L3SfAzP09H0OjfWYMebaaxS8-KQLUVCojlkMUEghH6OvOQ4yWe3xljrHLrZj-81-tpgNgbWZEoNMYZKzGcTujhkQ9YEVndYPSzeiznMw";
 
 
 spotify.getDevices(token);
-spotify.playSong(token,"2yI8xyHgyhCXyw0Vq98twb","ffe2a691d09d7e1dcfa8780260a7477738b84d86")
+spotify.playSong(token,"7F8RNvTQlvbeBLeenycvN6")

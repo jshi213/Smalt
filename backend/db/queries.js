@@ -19,6 +19,17 @@ exports.getHostById = async function (hostname) {
   return host._id;
 };
 
+exports.moveToCurrent= async function (songId,roomId){
+const room = await this.getRoomById(roomId);
+song = room.playlist.songs.id(songId);
+room.playlist.songs.id(songId).remove();
+room.playlist.currentSong = song;
+room.save(function (err) {
+  if (err) return handleError(err);
+  console.log('the sub-doc was removed')
+});
+}
+
 
 exports.createNewRoom = async function (host_id) {
   codee = makeCode(6);
@@ -72,6 +83,17 @@ exports.clearDB = async function () {
   const hostsGone = await Host.deleteMany({});
   console.log(`Cleared database (removed ${roomsGone.deletedCount} rooms, ${hostsGone.deletedCount} hosts).`);
 };
+exports.highestVotedSong = async function(roomId){
+  songs = await this.getAllSongs(roomId);
+  console.log(songs);
+  var bigSong = songs.songs[0];
+  songs.songs.forEach(song =>{
+    if(song.upVoteCount>bigSong.upVoteCount){
+      bigSong =song;
+    }
+  });
+  return bigSong.id;
+}
 
 async function addData(room) {
   const result = await room.save();

@@ -37,6 +37,11 @@ exports.broadcastNewSong = function (room, song) {
   console.log(`new song broadcasted to: ${room}`);
 };
 
+exports.broadcastSongPlaying = function(room, song){
+  io.in(room).emit("playing", song);
+  console.log(`playing broadcasted to: ${room}`);
+}
+
 exports.broadcastSongUpdated = function (room, updatedSong) {
   io.in(room).emit("songUpdated", updatedSong);
   console.log(`updated song broadcasted to: ${room}`);
