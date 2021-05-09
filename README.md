@@ -38,11 +38,14 @@ Smalt is essentially a Web Application utilising the Spotify API to create playl
 4. 'Like' the songs by preference, by clicking on the Heart on the right hand side and based on the number of likes from all the guests, it will show on the Host's playlist. 
 
 ## Meeting Minutes
+
+The following are records of our Meeting Minutes we stored on our shared Project Google Drive folder. 
+
 ### 01/04/21 - Zoom meeting
 * Decided on app layout
 * Made initial Figma wireframes
 * Discussed GitHub workflow
-* Spoke about how we would manage around timezone differences
+* Spoke about how we would manage around timezone differences and commitments outside of Uni
 * Made initial commit onto repo
 
 ### 07/04/21 - Zoom meeting
@@ -53,9 +56,8 @@ Smalt is essentially a Web Application utilising the Spotify API to create playl
 * JingWei - Design homepages for host and user
 
 ### 16/04/21 - Zoom meeting
-* Create issues on GitHub by Joel
-
-
+* Joel took initiative to create some issues for our team to work on
+* Group mostly worked on Assignment 2 for the entire Zoom meeting
 
 ### 21/04/21 - Zoom meeting
 * Spotify Authentication and login responsibility 
@@ -63,9 +65,8 @@ Smalt is essentially a Web Application utilising the Spotify API to create playl
 * Added more issues to be worked on 
 
 ### 25/04/21 - In-person & Zoom meeting
-* Discussed issues with backend
+* Discussed issues with backend - errors when compiling.
 * Added more issues to be worked on
-* We felt it was necessary to change the methodology from Software Development Lifecycle to Agile Methodology
 
 ### 01/05/21 - In-person & Zoom meeting
 * Discussed Spotify API documentation and the endpoints required
@@ -76,23 +77,23 @@ Smalt is essentially a Web Application utilising the Spotify API to create playl
 * Andrew's Canvas announcements today
 * Decided Heroku is not necessary for deployment 
 * Agreed on a mutual time to present the project in class
-* Refactor of code
+* Refactor of code - all files to ensure consistency and readability
 * Songs not playing
 
 ### 09/05/21 - In-person & Zoom meeting
-* Refactor of code
+* Refactor of code - changes made to new files and existing files to ensure consistency and readability
 * Fix any bugs
 * Play/pause/stop functionality to be added
 * Submitted the assignment
 
 ## Tasks Breakdown
 
-| Joel Shin                | Josh Burton                       | Jingwei Min                | Pranesh Chand                                |
-| ------------------------ | --------------------------------- | -------------------------- | -------------------------------------------- |
-| Create issues on GitHub  | Spotify login and authentication  | Design pages for frontend  | Database Connection & Schema Setup           |
-| Content Cell             | Content Cell                      | search bar error message   | Intialisation of Db Queries                  |
-| Content Cell             | Content Cell                      | icon button                | Write README.md file                         |
-| Content Cell             | Content Cell                      | format the outlook         | Write Wiki on GitHub Repo                    |
-| Content Cell             | Content Cell                      | update css style           | Refactor Axios requests into seperate files  |
+| Joel Shin (Mostly Full-Stack)       | Josh Burton (Mostly Full-Stack)   | Jingwei Min (Frontend)     | Pranesh Chand (Backend)                               |
+| ----------------------------------- | --------------------------------- | -------------------------- | -------------------------------------------- |
+| Create issues on GitHub             | Spotify login and authentication  | Design pages for frontend  | Database Connection & Schema Setup           |
+| Backend - All Aspects               | Backend - Endpoints & Sockets     | search bar error message   | Assisted with creating Db Queries            |
+| Frontend - All Aspects              | Initialisaed DB Queries           | icon button                | Write README.md file                         |
+| Initialisation of GitHub Repository | Backend - All Aspects             | format the outlook         | Write Wiki on GitHub Repo                    |
+| Assisted all team members           | Frontend - All Aspects            | update css style           | Facilitated both Zoom and In-person meetings |
 
-
+Please note 'All Aspects' denotes both Joel and Josh are well experienced in these areas of software development and went above and beyond their means to assist other team members in the Project with the tasks, including carrying out their own tasks that they were assigned for Full Stack development. 
