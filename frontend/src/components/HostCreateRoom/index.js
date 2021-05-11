@@ -1,57 +1,59 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styles from "./style.module.css";
 import { useHistory } from "react-router-dom";
-import { Button, TextField, makeStyles } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import axios from "axios";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import IconButton from "@material-ui/core/IconButton";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
 export default function HostCreateRoom() {
   const history = useHistory();
-  const [cookies, setCookie] = useCookies(['room']);
+  const [hostCookies, setHostCookie] = useCookies(["host"]);
+  const [roomCookies, setRoomCookie] = useCookies(["room"]);
   const [roomName, setRoomName] = React.useState("");
 
   const [emptyFieldFlag, setEmptyFieldFlag] = React.useState(false);
-  useEffect( async() => {
+  useEffect(async () => {
     var code = new URLSearchParams(window.location.search).get("code");
 
-    var spotifyLogin =cookies.host;
-    console.log(`spotify login: ${spotifyLogin}`)
-    if(code ==null&& spotifyLogin == null){
+    var spotifyLogin = hostCookies.host;
+    console.log(`spotify login: ${spotifyLogin}`);
+    if (code == null && spotifyLogin == null) {
       history.push("/");
       return;
     }
-    if(spotifyLogin== null){
-      console.log(`spotify login: ${spotifyLogin}`)
+    if (spotifyLogin == null) {
+      console.log(`spotify login: ${spotifyLogin}`);
       const login = {
         authCode: code,
       };
-      const response = await axios.post("http://localhost:3001/host/login", login);
-      console.log(response)
+      const response = await axios.post(
+        "http://localhost:3001/host/login",
+        login
+      );
+      console.log(response);
       var cookie = {
-        username: response.data
-      }
-      setCookie('host', cookie, { path: '/' });
+        username: response.data,
+      };
+      setHostCookie("host", cookie, { path: "/" });
     }
-    
-  },[]);
+  }, []);
 
-  const createRoom = async() => {
-    
+  const createRoom = async () => {
     if (roomName !== "") {
       const room = {
         name: roomName,
-        userName: cookies.host.username,
+        userName: hostCookies.host.username,
       };
       console.log(room.userName);
       const response = await axios.post("http://localhost:3001/host/new", room);
-      console.log(response)
+      console.log(response);
       var cookie = {
-        id: response.data
-      }
-      
-      setCookie('room', cookie, { path: '/' });
-      console.log("going")
+        id: response.data,
+      };
+
+      setRoomCookie("room", cookie, { path: "/" });
+      console.log("going");
       history.push("/home");
     } else {
       setEmptyFieldFlag(true);
