@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { useSessionStorage } from '../../useSessionStorage';
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import {
   Avatar,
@@ -12,6 +13,7 @@ import {
   TableRow,
 
 } from "@material-ui/core";
+import { DeleteForever } from "@material-ui/icons";
 
 export default function Song(props) {
   console.log("I was called");
@@ -39,6 +41,10 @@ export default function Song(props) {
       setLikeButtonColor("inherit");
     }
   });
+
+  const deleteSong = () => {
+    console.log('delete the song')
+  }
 
   const handleLikeButton = async () => {
     setLikedStatus(!liked);
@@ -83,6 +89,9 @@ export default function Song(props) {
         <TableCell className={styles.tableCell}>
           <IconButton onClick={handleLikeButton} color={likeButtonColor}>
             <FavoriteIcon />
+          </IconButton>
+          <IconButton onClick={deleteSong} color="secondary">
+            <DeleteForeverIcon />
           </IconButton>
         </TableCell>
       </TableRow>
